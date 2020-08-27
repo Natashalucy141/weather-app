@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <nav>
+            <form id="search-form">
+              <input
+                type="text"
+                placeholder="  Enter a town or city"
+                class="inputTextBar"
+                autocomplete="off"
+                autofocus="on"
+                id="search-bar-input"
+                onfocus="this.value=''"
+              />
+              <input type="submit" value="🔍" class="searchButton" />
+            </form>
+          </nav>
+          <button id="pin-button">📌</button>
+          <section class="current-weather">
+            <span>
+              <img class="currentIcon" src="Images/sunny_cloudy.png" alt="" />
+            </span>
+            <br />
+            <h1 id="city">LONDON</h1>
+            <h2>
+              <span class="temperature" id="temperature">17</span>
+              <span class="weather-units">
+                <a href="#" id="celsius-link">℃</a> |
+                <a href="#" id="fahrenheit-link">℉</a>
+              </span>
+            </h2>
+          </section>
+
+          <section class="CurrentDateAndTime">
+            <h3>Today Saturday 15:03</h3>
+          </section>
+          <section class="current-details">
+            <p>
+              <span id="temperature-description">Partly cloudy,</span>
+              <span id="current-temp-description">currently</span>
+              <span id="highs-description">Highs today of 22°</span>
+            </p>
+            <div class="row">
+              <div class="col-6">SUNRISE <span class="days">5:15am</span></div>
+
+              <div class="col-6">
+                HUMIDITY <span class="days" id="humidity">87%</span>
+              </div>
+              <div class="col-6">SUNSET <span class="days">8:50pm</span></div>
+              <div class="col-6">
+                WIND <span class="days" id="wind">km/h</span>
+              </div>
+              <div class="col">FEELS LIKE <span class="days">17°</span></div>
+              <div class="col">
+                CHANCE OF RAIN <span class="days">10%</span>
+              </div>
+            </div>
+          </section>
+          <br />
+
+          <main class="weather-predictions">
+            <div class="row">
+              <div class="col-4">
+                <div class="pred-day">
+                  <img
+                    class="predictionIcons"
+                    src="Images/sunny_cloudy.png"
+                    alt=""
+                  />
+                  <br />22°<br />16°<br /><span class="days">SUNDAY</span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="pred-day">
+                  <img
+                    class="predictionIcons"
+                    src="Images/rain.png"
+                    alt=""
+                  /><br />21°<br />14°<br /><span class="days">MONDAY</span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="pred-day">
+                  <img
+                    class="predictionIcons"
+                    src="Images/sunny_cloudy.png"
+                    alt=""
+                  /><br />22°<br />13°<br /><span class="days">TUESDAY</span>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-4">
+                <div class="pred-day">
+                  <img
+                    class="predictionIcons"
+                    src="Images/sunny_cloudy.png"
+                    alt=""
+                  /><br />
+                  23°<br />14°<br /><span class="days">WEDNESDAY</span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="pred-day">
+                  <img
+                    class="predictionIcons"
+                    src="Images/sunny.png"
+                    alt=""
+                  /><br />25°<br />16°<br /><span class="days">THURSDAY</span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="pred-day">
+                  <img
+                    class="predictionIcons"
+                    src="Images/cloud.png"
+                    alt=""
+                  /><br />22°<br />14°<br /><span class="days">FRIDAY</span>
+                </div>
+              </div>
+            </div>
+          </main>
+          <br />
+          <section class="footer">Built by Natasha Aldridge</section>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
