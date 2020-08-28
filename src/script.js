@@ -11,7 +11,6 @@ let days = [
   "Saturday",
 ];
 let day = days[now.getDay()];
-
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -38,24 +37,6 @@ function search(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
-/* 
-// challenge 3 Fahrenheit to celsius
-
-function showFahrenheit(event) {
-  event.preventDefault();
-  temperature.innerHTML = "66";
-}
-
-function showCelsius(event) {
-  event.preventDefault();
-  temperature.innerHTML = "19";
-}
-
-let celsius = document.querySelector("#celsius-link");
-let fahrenheit = document.querySelector("#fahrenheit-link");
-fahrenheit.addEventListener("click", showFahrenheit);
-celsius.addEventListener("click", showCelsius);
-*/
 
 // Bonus challenge - to get the current location from pin button
 function searchLocation(position) {
@@ -91,11 +72,13 @@ function showTemperature(response) {
   let descriptionSky = document.querySelector("#temperature-description");
   descriptionSky.innerHTML = `${response.data.weather[0].description},`;
 
-  let descriptionCurrent = document.querySelector("#current-temp-description");
-  descriptionCurrent.innerHTML = `Currently ${response.data.main.temp}°`;
+  let currentTempDescription = Math.round(response.data.main.temp);
+  let descriptionCurrent = document.querySelector("#currentTempDescription");
+  descriptionCurrent.innerHTML = `Currently ${currentTempDescription}°`;
 
-  let descriptionHighs = document.querySelector("#highs-description");
-  descriptionHighs.innerHTML = `Highs today of ${response.data.main.temp_max}°C`;
+  let highsDescription = Math.round(response.data.main.temp_max);
+  let descriptionHighs = document.querySelector("#highsDescription");
+  descriptionHighs.innerHTML = `Highs today of ${highsDescription}°C`;
 
   let descriptionHumidity = document.querySelector("#humidity");
   descriptionHumidity.innerHTML = `${response.data.main.humidity}%`;
@@ -103,27 +86,40 @@ function showTemperature(response) {
   let wind = Math.round(response.data.wind.speed);
   let descriptionWind = document.querySelector("#wind");
   descriptionWind.innerHTML = `${wind}km/h`;
+
+  let feelsLike = Math.round(response.data.main.feels_like);
+  let descriptionFeelsLike = document.querySelector("#feelsLike");
+  descriptionFeelsLike.innerHTML = `${feelsLike}°`;
+
+  console.log(response.data.main.feels_like);
 }
 
 searchCity("London");
 
-// bonus challenege need to finish off
-/*
-function showPosition(position) {
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${position.coords.latitude}`;
-  let latitude = (position.coords.latitude);
-  let longitude = (position.coords.longitude);
-}
-
-function getCurrentPosition() {
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
- 
-
-
-*/
 let pinButton = document.querySelector("#pin-button");
 pinButton.addEventListener("click", getCurrentLocation);
 // the bonus challenege to get current location from pin button:
+
+// challenge 3 Fahrenheit to celsius
+/*
+function showFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (14 * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheit.addEventListener("click", showFahrenheit);
+
+
+function showCelsius(event) {
+  event.preventDefault();
+  temperature.innerHTML = "19";
+}
+
+let celsius = document.querySelector("#celsius-link");
+-let fahrenheit = document.querySelector("#fahrenheit-link");
+-fahrenheit.addEventListener("click", showFahrenheit);
+celsius.addEventListener("click", showCelsius);
+*/
