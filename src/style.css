@@ -64,6 +64,7 @@ nav {
 .inputTextBar {
   position: relative;
   top: 40px;
+  right: 20px;
   width: 300px;
   background-color: white;
   border-radius: 40px;
@@ -141,7 +142,7 @@ nav {
   color: grey;
   position: relative;
   top: 13px;
-  left: 355px;
+  left: 175px;
   font-size: 16px;
   background-color: white;
   padding: 0px 10px;
