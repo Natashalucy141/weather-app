@@ -118,6 +118,10 @@ nav {
   row-gap: 10px;
 }
 
+.hosting {
+  text-align: center;
+}
+
 #celsius-link {
   color: #fff;
 }
