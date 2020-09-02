@@ -91,6 +91,12 @@ function showTemperature(response) {
   let descriptionFeelsLike = document.querySelector("#feelsLike");
   descriptionFeelsLike.innerHTML = `${feelsLike}°`;
 
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/10d@2x.png`
+  );
+
   console.log(response.data.main.feels_like);
 }
 
