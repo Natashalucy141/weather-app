@@ -25,12 +25,12 @@ h3.innerHTML = `Today ${day} ${hours}:${minutes}`;
 
 //CURRENT CHALLENGE - get time to display on forecast predictions:
 function formatHours(timestamp) {
-  let day = days[now.getDay()];
-  let hours = now.getHours();
+  let time = new Date(timestamp);
+  let hours = time.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = now.getMinutes();
+  let minutes = time.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -68,26 +68,30 @@ function getCurrentLocation(event) {
 // CURRENT EXERCISE: new function display forecast
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  let forecast = response.data.list[0];
-  console.log(forecast);
+  forecastElement.innerHTML = null;
+  let forecast = null;
 
-  forecastElement.innerHTML = `
+  for (let index = 0; index < 3; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
   <div class="row">
               <div class="col-4">
-                <div class="pred-day">
+              <div class="pred-day">
+              <div class="weather-predictions">
                   <img
                     class="predictionIcons"
                     src="http://openweathermap.org/img/wn/${
                       forecast.weather[0].icon
                     }@2x.png"
-                  /><br />${Math.round(
-                    forecast.main.temp_max
-                  )}°<br />${Math.round(
-    forecast.main.temp_min
-  )}°<br /><span class="days">${formatHours(forecast.dt * 1000)}</span>
+                  /><br />
+                  ${Math.round(forecast.main.temp_max)}°
+                  <br />
+                  ${Math.round(forecast.main.temp_min)}°
+  <br /><span class="days">${formatHours(forecast.dt * 1000)}</span>
                 </div>
               </div>
   `;
+  }
 }
 
 function searchCity(city) {
