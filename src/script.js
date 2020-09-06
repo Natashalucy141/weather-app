@@ -92,6 +92,8 @@ function displayForecast(response) {
               </div>
   `;
   }
+
+  // another one here
 }
 
 function searchCity(city) {
