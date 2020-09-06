@@ -71,10 +71,10 @@ function displayForecast(response) {
   forecastElement.innerHTML = null;
   let forecast = null;
 
-  for (let index = 0; index < 3; index++) {
+  for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
-  <div class="row">
+  
               <div class="col-4">
               <div class="pred-day">
               <div class="weather-predictions">
