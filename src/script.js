@@ -73,6 +73,7 @@ function displayForecast(response) {
 
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
+    //  let emoji = getEmoji(forecast.weather[0].description);
     forecastElement.innerHTML += `
   
               <div class="col-4">
@@ -137,7 +138,10 @@ function showTemperature(response) {
   descriptionFeelsLike.innerHTML = `${feelsLike}°`;
 
   let descriptionSunrise = document.querySelector("#sunrise");
-  descriptionSunrise.innerHTML = `${response.data.sys.sunrise}`;
+  descriptionSunrise.innerHTML = formatHours(response.data.sys.sunrise * 1000);
+
+  let descriptionSunset = document.querySelector("#sunset");
+  descriptionSunset.innerHTML = formatHours(response.data.sys.sunset * 1000);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -173,6 +177,7 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("London");
+
 // the bonus challenege to get current location from pin button:
 
 // challenge 3 Fahrenheit to celsius
