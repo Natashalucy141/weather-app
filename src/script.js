@@ -73,7 +73,7 @@ function displayForecast(response) {
 
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
-    //  let emoji = getEmoji(forecast.weather[0].description);
+
     forecastElement.innerHTML += `
   
               <div class="col-4">
@@ -93,8 +93,6 @@ function displayForecast(response) {
               </div>
   `;
   }
-
-  // another one here
 }
 
 function searchCity(city) {
@@ -106,8 +104,9 @@ function searchCity(city) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-
+// gives data from API
 function showTemperature(response) {
+  console.log(response.data.weather[0].icon);
   let h1 = document.querySelector("#city");
   h1.innerHTML = response.data.name;
 
