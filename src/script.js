@@ -89,6 +89,8 @@ function displayForecast(response) {
                   <br />
                   ${Math.round(forecast.main.temp_min)}°
   <br /><span class="days">${formatHours(forecast.dt * 1000)}</span>
+
+  
                 </div>
               </div>
   `;
@@ -141,11 +143,21 @@ function showTemperature(response) {
   let descriptionSunset = document.querySelector("#sunset");
   descriptionSunset.innerHTML = formatHours(response.data.sys.sunset * 1000);
 
+  // this code allows me to use my own images for the main weather icon
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src", //changing the origional src attribute to the link
+    `images/${response.data.weather[0].icon}.png`
+  );
+
+  /* this code will show api forecast icons from the openweather website: 
+
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src", //changing the origional src attribute to the link
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  */
 
   celsiusTemperature = response.data.main.temp;
 }
