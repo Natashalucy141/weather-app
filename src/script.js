@@ -106,7 +106,6 @@ function searchCity(city) {
 }
 // gives data from API
 function showTemperature(response) {
-  console.log(response.data.weather[0].icon);
   let h1 = document.querySelector("#city");
   h1.innerHTML = response.data.name;
 
