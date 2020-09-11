@@ -81,9 +81,7 @@ function displayForecast(response) {
               <div class="weather-predictions">
                   <img
                     class="predictionIcons"
-                    src="http://openweathermap.org/img/wn/${
-                      forecast.weather[0].icon
-                    }@2x.png"
+                    src="images/${forecast.weather[0].icon}.png"
                   /><br />
                   ${Math.round(forecast.main.temp_max)}°
                   <br />
@@ -96,6 +94,9 @@ function displayForecast(response) {
   `;
   }
 }
+
+//this link can be used ubove in the display forecast to pull the icon images from the api website
+//src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
 
 function searchCity(city) {
   let apiKey = "be5e467edafea0de9835c92cd194e4ef";
