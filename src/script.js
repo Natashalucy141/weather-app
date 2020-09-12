@@ -21,7 +21,7 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-h3.innerHTML = `Today ${day} ${hours}:${minutes}`;
+h3.innerHTML = `Today ${day}. Last updated ${hours}:${minutes}`;
 
 //CURRENT CHALLENGE - get time to display on forecast predictions:
 function formatHours(timestamp) {
