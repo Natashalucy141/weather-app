@@ -26,11 +26,11 @@ h3.innerHTML = `Today ${day}. Last updated ${hours}:${minutes}`;
 //CURRENT CHALLENGE - get time to display on forecast predictions:
 function formatHours(timestamp) {
   let time = new Date(timestamp);
-  let hours = time.getHours();
+  let hours = time.getUTCHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = time.getMinutes();
+  let minutes = time.getUTCMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -147,6 +147,9 @@ function showTemperature(response) {
   let descriptionSunset = document.querySelector("#sunset");
   descriptionSunset.innerHTML = formatHours(response.data.sys.sunset * 1000);
 
+  let timeAtLocation = response.data.dt + response.data.timezone;
+  h3.innerHTML = formatHours(timeAtLocation * 1000);
+
   // this code allows me to use my own images for the main weather icon
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -191,29 +194,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("London");
-
-// the bonus challenege to get current location from pin button:
-
-// challenge 3 Fahrenheit to celsius
-/*
-function showFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = (14 * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = fahrenheitTemperature;
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheit.addEventListener("click", showFahrenheit);
-
-
-function showCelsius(event) {
-  event.preventDefault();
-  temperature.innerHTML = "19";
-}
-
-let celsius = document.querySelector("#celsius-link");
--let fahrenheit = document.querySelector("#fahrenheit-link");
--fahrenheit.addEventListener("click", showFahrenheit);
-celsius.addEventListener("click", showCelsius);
-*/
