@@ -25,9 +25,8 @@ let dateElement = document.querySelector("#date");
 let timeElement = document.querySelector("#time");
 dateElement.innerHTML = `${day}`;
 timeElement.innerHTML = `${hours}:${minutes}`;
-//h3.innerHTML = `Today ${day}. Last updated ${hours}:${minutes}`;
 
-//CURRENT CHALLENGE - get time to display on forecast predictions:
+//Get time to display on forecast predictions:
 function formatHours(timestamp) {
   let time = new Date(timestamp);
   let hours = time.getUTCHours();
@@ -41,7 +40,7 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-//search bar weather input:
+//Search bar weather input:
 
 function search(event) {
   event.preventDefault();
@@ -56,7 +55,7 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
-// Bonus challenge - to get the current location from pin button
+// Get the current location from pin button
 function searchLocation(position) {
   let apiKey = "be5e467edafea0de9835c92cd194e4ef";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
@@ -69,7 +68,7 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-// CURRENT EXERCISE: new function display forecast
+// New function display forecast
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
@@ -94,15 +93,13 @@ function displayForecast(response) {
   <br /><span class="days">${formatHours(
     (forecast.dt + timezone) * 1000
   )}</span>
-
-  
-                </div>
-              </div>
+</div>
+ </div>
   `;
   }
 }
 
-//this link can be used ubove in the display forecast to pull the icon images from the api website
+//this link can be used ubove src in the display forecast function to pull the icon images from the api website
 //src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
 
 function searchCity(city) {
