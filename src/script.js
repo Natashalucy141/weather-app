@@ -147,8 +147,12 @@ function showTemperature(response) {
   let descriptionSunset = document.querySelector("#sunset");
   descriptionSunset.innerHTML = formatHours(response.data.sys.sunset * 1000);
 
-  let timeAtLocation = response.data.dt + response.data.timezone;
-  h3.innerHTML = formatHours(timeAtLocation * 1000);
+  // h3 title description
+  let dateElement = document.querySelector("#date");
+  let timeElement = document.querySelector("#time");
+  dateElement.innerHTML = `${day}`;
+  timeElement.innerHTML = `${hours}:${minutes}`;
+  timeElement.innerHTML = formatHours(timeAtLocation * 1000);
 
   // this code allows me to use my own images for the main weather icon
   let iconElement = document.querySelector("#icon");
