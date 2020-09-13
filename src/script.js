@@ -21,7 +21,11 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-h3.innerHTML = `Today ${day}. Last updated ${hours}:${minutes}`;
+let dateElement = document.querySelector("#date");
+let timeElement = document.querySelector("#time");
+dateElement.innerHTML = `${day}`;
+timeElement.innerHTML = `${hours}:${minutes}`;
+//h3.innerHTML = `Today ${day}. Last updated ${hours}:${minutes}`;
 
 //CURRENT CHALLENGE - get time to display on forecast predictions:
 function formatHours(timestamp) {
@@ -147,11 +151,7 @@ function showTemperature(response) {
   let descriptionSunset = document.querySelector("#sunset");
   descriptionSunset.innerHTML = formatHours(response.data.sys.sunset * 1000);
 
-  // h3 title description
-  let dateElement = document.querySelector("#date");
-  let timeElement = document.querySelector("#time");
-  dateElement.innerHTML = `${day}`;
-  timeElement.innerHTML = `${hours}:${minutes}`;
+  let timeAtLocation = response.data.dt + response.data.timezone;
   timeElement.innerHTML = formatHours(timeAtLocation * 1000);
 
   // this code allows me to use my own images for the main weather icon
