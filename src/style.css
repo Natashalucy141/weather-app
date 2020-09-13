@@ -37,8 +37,11 @@ nav {
 
 .footer {
   text-align: center;
-  color: grey;
   font-size: 15px;
+}
+
+#linkedin {
+  color: gray;
 }
 
 .card {
