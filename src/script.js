@@ -61,6 +61,10 @@ function searchLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemperature);
+
+  //update forcast weather from current city button.
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getCurrentLocation(event) {
@@ -115,6 +119,8 @@ function searchCity(city) {
 function showTemperature(response) {
   let h1 = document.querySelector("#city");
   h1.innerHTML = response.data.name;
+
+  console.log(response.data);
 
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
