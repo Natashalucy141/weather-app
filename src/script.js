@@ -57,7 +57,7 @@ form.addEventListener("submit", search);
 
 // Get the current location from pin button
 function searchLocation(position) {
-  let apiKey = "be5e467edafea0de9835c92cd194e4ef";
+  let apiKey = "c8d55d809a6c73b609c6c00f06672c2d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemperature);
@@ -150,6 +150,8 @@ function showTemperature(response) {
 
   let descriptionSunrise = document.querySelector("#sunrise");
   descriptionSunrise.innerHTML = formatHours(response.data.sys.sunrise * 1000);
+
+  //console.log(response.data.timezone);
 
   let descriptionSunset = document.querySelector("#sunset");
   descriptionSunset.innerHTML = formatHours(response.data.sys.sunset * 1000);
